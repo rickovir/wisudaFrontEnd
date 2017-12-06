@@ -62,7 +62,7 @@
                 <img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded logo-masuk" alt="Logo UEU">
                 <H1 class="text-primary">Login Mahasiswa</H1>
               </div>
-              <form id="login-form" method="post">
+              <form id="login-form">
                 <div class="form-group">
                   <input id="login-username" type="text" name="NIM" required="" placeholder="NIM" class="input-material">
                   <!-- <label for="login-username" class="label-material">NIM</label> -->
@@ -92,31 +92,47 @@
             <div class="content content-login">
               <div class="text-center">
                 <img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded logo-masuk" alt="Logo UEU">
-                <H1 class="text-primary">Daftar Baru Mahasiswa</H1>
+                <h1 class="text-primary">Daftar Baru Mahasiswa</h1>
               </div>
-              <form id="login-form" method="post">
+              <form novalidate [formGroup]="RegisForm" id="login-form" >
 
                 <div class="form-group">
-                  <input id="login-namaLengkap" type="text" placeholder="Nama Lengkap" name="Nama Lengkap" required="" class="input-material">
+                  <input id="login-namaLengkap" type="text" placeholder="Nama Lengkap" class="input-material" formControlName="namaLengkap" required>
                   <!-- <label for="login-namaLengkap" class="label-material">Nama Lengkap</label> -->
+                  <div class="form-text text-danger"
+                       *ngIf="namaLengkap.errors && (namaLengkap.dirty || namaLengkap.touched)">
+                    <p *ngIf="namaLengkap.errors.required">namaLengkap is required</p>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <input id="login-NIM" type="text" placeholder="NIM" name="NIM" required="" class="input-material">
+                  <input id="login-NIM" type="text" placeholder="NIM" name="NIM" required="" class="input-material" formControlName="NIM" required>
                   <!-- <label for="login-NIM" class="label-material">NIM</label> -->
+                  <div class="form-text text-danger"
+                       *ngIf="NIM.errors && (NIM.dirty || NIM.touched)">
+                    <p *ngIf="NIM.errors.required">NIM is required</p>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <input id="login-password" type="password" placeholder="Password" name="password" required="" class="input-material">
+                  <input id="login-password" type="password" placeholder="Password" class="input-material" formControlName="password" required>
                   <!-- <label for="login-password" class="label-material">Password</label> -->
+                  <div class="form-text text-danger"
+                       *ngIf="password.errors && (password.dirty || password.touched)">
+                    <p *ngIf="password.errors.required">Password is required</p>
+                    <p *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{ password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </p>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <input id="login-ulangpassword" type="password" placeholder="Ulangi Password" name="ulangpassword" required="" class="input-material">
+                  <input id="login-ulangpassword" type="password" placeholder="Ulangi Password" class="input-material" formControlName="passwordUlang" required>
                   <!-- <label for="login-ulangpassword" class="label-material">Ulangi Password</label> -->
+                  <div class="form-text text-danger"  [hidden]="passwordUlang.valid || passwordUlang.pristine">
+                    Password Mismatch
+                  </div>
                 </div>
 
-                <button id="login" class="btn btn-primary" (click)="tambahKuota()" >Daftar</button>
+                <button id="login" class="btn btn-primary" (click)="tambahKuota()" [disabled]="RegisForm.invalid" >Daftar</button>
                 <!-- This should be submit button but I replaced it with <a> for demo purposes-->
               </form>
               <a routerLink="/dashboard" routerLinkActive="active" class="forgot-pass">dashboard</a><br>
