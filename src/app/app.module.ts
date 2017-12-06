@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -9,8 +10,12 @@ import { LoginmhsComponent } from './loginmhs/loginmhs.component';
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
+    { 
+      path: '', 
+      component: LoginmhsComponent 
+    },
 	  { 
-	  	path: 'loginmhs', 
+	  	path: 'mahasiswamasuk/:k', 
 	  	component: LoginmhsComponent 
 	  },
 	  { 
@@ -18,7 +23,7 @@ const appRoutes: Routes = [
 	  	component: DashboardComponent 
 	  },
 	  { 
-	  	path: '', 
+	  	path: 'home', 
 	  	component: HomeComponent 
 	  }
   ];
@@ -35,7 +40,9 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    BrowserModule
+    BrowserModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

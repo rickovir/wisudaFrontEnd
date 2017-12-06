@@ -1,1 +1,11 @@
 /* your styles go here */
+.logo-masuk{
+	width: 200px;
+	height: 200px;
+}
+.content-login h1{
+	font-weight: normal;
+}
+.login-form{
+	margin-top:20px;
+}

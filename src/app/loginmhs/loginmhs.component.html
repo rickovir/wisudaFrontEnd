@@ -1,37 +1,133 @@
 <div class="page login-page">
   <div class="container d-flex align-items-center">
     <div class="form-holder has-shadow">
-      <div class="row">
+      <div class="row" *ngIf="page">
         <!-- Logo & Information Panel-->
+        <div class="col-lg-3">
+          <div class="info d-flex align-items-center">
+            <div class="content">
+              <div class="logo">
+                <div class="text-center">
+                  <img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded logo-masuk" alt="Logo UEU">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-9">
+            <div class="info d-flex align-items-center">
+              <div class="content">
+                <div class="logo">
+                  <h1>PENDAFTARAN CALON WISUDA UEU</h1>
+                </div>
+                <p>Sistem Pendaftaran Wisuda</p>
+                <div *ngIf="staticAlert" (close)="staticAlert = false" class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Kuota Tidak Tersedia
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <h3>Kouta Wisuda : {{ kuota }} </h3>
+                <button [disabled]="kuota == 9999" class="btn btn-success" (click)= "startLogin()">Login</button>
+                <button [disabled]="kuota == 0 || kuota == 9999" class="btn btn-light" (click)="startDaftar()" >Daftar</button>
+                
+              </div>
+            </div>
+          </div>
+
+
+      </div>
+
+    <!-- Halaman Kuota Ada -->
+      <div class="row" *ngIf="login == true || daftar == true">
+
         <div class="col-lg-6">
           <div class="info d-flex align-items-center">
             <div class="content">
               <div class="logo">
-                <h1>ESA UNGGUL</h1>
+                <h1>PENDAFTARAN CALON WISUDA UEU</h1>
               </div>
               <p>Sistem Pendaftaran Wisuda</p>
+              <h3>Kouta Wisuda : {{ kuota }} </h3>
             </div>
           </div>
         </div>
-        <!-- Form Panel    -->
-        <div class="col-lg-6 bg-white">
+
+        <!-- Bagian login -->
+        <div class="col-lg-6 bg-white" *ngIf="login == true">
           <div class="form d-flex align-items-center">
-            <div class="content">
+            <div class="content content-login">
+              <div class="text-center">
+                <img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded logo-masuk" alt="Logo UEU">
+                <H1 class="text-primary">Login Mahasiswa</H1>
+              </div>
               <form id="login-form" method="post">
                 <div class="form-group">
-                  <input id="login-username" type="text" name="loginUsername" required="" class="input-material">
-                  <label for="login-username" class="label-material">User Name</label>
+                  <input id="login-username" type="text" name="NIM" required="" placeholder="NIM" class="input-material">
+                  <!-- <label for="login-username" class="label-material">NIM</label> -->
                 </div>
+
                 <div class="form-group">
-                  <input id="login-password" type="password" name="loginPassword" required="" class="input-material">
-                  <label for="login-password" class="label-material">Password</label>
-                </div><a id="login" href="index.html" class="btn btn-primary">Login</a>
+                  <input id="login-password" type="password" name="password" required="" placeholder="Password" class="input-material">
+                  <!-- <label for="login-password" class="label-material">Password</label> -->
+                </div>
+
+
+                <button id="login" class="btn btn-primary" (click)="tambahKuota()" >Login</button>
+                
                 <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-              </form><a routerLink="/dashboard" routerLinkActive="active" class="forgot-pass">dashboard</a><br><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
+              </form>
+
+              <a routerLink="/dashboard" routerLinkActive="active" class="forgot-pass">dashboard</a>
+              <br>
+              <small>Belum Punya Akun ? </small><a (click)="startDaftar()" class="signup">Daftar</a>
             </div>
           </div>
         </div>
+        <!-- Endof Bagian Login -->
+        <!-- Bagian Daftar -->
+        <div class="col-lg-6 bg-white" *ngIf="daftar == true">
+          <div class="form d-flex align-items-center">
+            <div class="content content-login">
+              <div class="text-center">
+                <img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded logo-masuk" alt="Logo UEU">
+                <H1 class="text-primary">Daftar Baru Mahasiswa</H1>
+              </div>
+              <form id="login-form" method="post">
+
+                <div class="form-group">
+                  <input id="login-namaLengkap" type="text" placeholder="Nama Lengkap" name="Nama Lengkap" required="" class="input-material">
+                  <!-- <label for="login-namaLengkap" class="label-material">Nama Lengkap</label> -->
+                </div>
+
+                <div class="form-group">
+                  <input id="login-NIM" type="text" placeholder="NIM" name="NIM" required="" class="input-material">
+                  <!-- <label for="login-NIM" class="label-material">NIM</label> -->
+                </div>
+
+                <div class="form-group">
+                  <input id="login-password" type="password" placeholder="Password" name="password" required="" class="input-material">
+                  <!-- <label for="login-password" class="label-material">Password</label> -->
+                </div>
+
+                <div class="form-group">
+                  <input id="login-ulangpassword" type="password" placeholder="Ulangi Password" name="ulangpassword" required="" class="input-material">
+                  <!-- <label for="login-ulangpassword" class="label-material">Ulangi Password</label> -->
+                </div>
+
+                <button id="login" class="btn btn-primary" (click)="tambahKuota()" >Daftar</button>
+                <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+              </form>
+              <a routerLink="/dashboard" routerLinkActive="active" class="forgot-pass">dashboard</a><br>
+              <small>Sudah Punya Akun? </small><a (click)="startLogin()" class="signup">Login</a>
+            </div>
+          </div>
+        </div>
+        <!-- Endof Bagian Daftar -->
+    <!-- Endof Halaman kuota ada -->
       </div>
+
     </div>
   </div>
   <div class="copyrights text-center">
