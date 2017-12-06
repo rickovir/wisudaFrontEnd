@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginmhsComponent } from './loginmhs/loginmhs.component';
 import { HomeComponent } from './home/home.component';
+import { HomemhsComponent } from './homemhs/homemhs.component';
 
 const appRoutes: Routes = [
     { 
@@ -18,6 +19,10 @@ const appRoutes: Routes = [
 	  	path: 'mahasiswamasuk/:k', 
 	  	component: LoginmhsComponent 
 	  },
+    { 
+      path: 'mahasiswahome', 
+      component: HomemhsComponent 
+    },
 	  { 
 	  	path: 'dashboard', 
 	  	component: DashboardComponent 
@@ -33,7 +38,8 @@ const appRoutes: Routes = [
     AppComponent,
     DashboardComponent,
     LoginmhsComponent,
-    HomeComponent
+    HomeComponent,
+    HomemhsComponent
   ],
   imports: [
   	 RouterModule.forRoot(

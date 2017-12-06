@@ -16,21 +16,27 @@ export class LoginmhsComponent implements OnInit {
 // test form
 
   RegisForm: FormGroup;
+  LoginForm: FormGroup;
   namaLengkap: FormControl;
   NIM: FormControl;
   password: FormControl;
   passwordUlang: FormControl;
+  NIMLogin: FormControl;
+  passwordLogin: FormControl;
 
   constructor(private route: ActivatedRoute) {
   	this.kuota = 0;
-    this.route.params.subscribe( params => this.kuota += Number(params['k']));
+    this.route.params.subscribe( params => 
+      this.kuota += Number(params['k'])
+    );
+    if(!this.kuota)
+      this.kuota = 0;
   }
 
   ngOnInit() {
+
     if(this.kuota != 0)
        this.staticAlert = false
-     this.createFormControls();
-     this.createForm();
   }
 
   tambahKuota()
@@ -43,15 +49,32 @@ export class LoginmhsComponent implements OnInit {
     this.page = false;
     this.daftar = false;
     this.login = true;
+    this.createLoginForm();
   }
   startDaftar()
   {
-    this.page = false;
-    this.daftar = true;
-    this.login = false;
+    if(this.kuota != 0)
+    {
+      this.page = false;
+      this.daftar = true;
+      this.login = false;
+      this.createRegisForm();
+    }
   }
 
-  createFormControls() {
+  createLoginForm() {
+    this.NIMLogin = new FormControl('', Validators.required);
+    this.passwordLogin = new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+    this.LoginForm = new FormGroup({
+      NIMLogin : this.NIMLogin,
+      passwordLogin : this.passwordLogin,
+    });
+  }
+
+  createRegisForm() {
     this.namaLengkap = new FormControl('', Validators.required);
     this.NIM = new FormControl('', Validators.required);
     this.password = new FormControl('', [
@@ -62,8 +85,6 @@ export class LoginmhsComponent implements OnInit {
       Validators.required,
       Validators.minLength(8)
     ]);
-  }
-  createForm() {
     this.RegisForm = new FormGroup({
       namaLengkap : this.namaLengkap,
       NIM : this.NIM,

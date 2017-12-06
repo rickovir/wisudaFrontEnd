@@ -62,19 +62,28 @@
                 <img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded logo-masuk" alt="Logo UEU">
                 <H1 class="text-primary">Login Mahasiswa</H1>
               </div>
-              <form id="login-form">
+              <form novalidate [formGroup]="LoginForm" id="login-form">
                 <div class="form-group">
-                  <input id="login-username" type="text" name="NIM" required="" placeholder="NIM" class="input-material">
-                  <!-- <label for="login-username" class="label-material">NIM</label> -->
+                  <input id="login-NIM" type="text" placeholder="NIM" name="NIMLogin" class="input-material" formControlName="NIMLogin" required>
+                  <!-- <label for="login-NIM" class="label-material">NIM</label> -->
+                  <div class="form-text text-danger"
+                       *ngIf="NIMLogin.errors && (NIMLogin.dirty || NIMLogin.touched)">
+                    <p *ngIf="NIMLogin.errors.required">NIM is required</p>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <input id="login-password" type="password" name="password" required="" placeholder="Password" class="input-material">
+                  <input id="login-password" type="password" placeholder="Password" class="input-material" formControlName="passwordLogin" required>
                   <!-- <label for="login-password" class="label-material">Password</label> -->
+                  <div class="form-text text-danger"
+                       *ngIf="passwordLogin.errors && (passwordLogin.dirty || passwordLogin.touched)">
+                    <p *ngIf="passwordLogin.errors.required">Password is required</p>
+                    <p *ngIf="passwordLogin.errors.minlength">Password must be 8 characters long, we need another {{ passwordLogin.errors.minlength.requiredLength - passwordLogin.errors.minlength.actualLength}} characters </p>
+                  </div>
                 </div>
 
 
-                <button id="login" class="btn btn-primary" (click)="tambahKuota()" >Login</button>
+                <button id="login" class="btn btn-primary" (click)="tambahKuota()" [disabled]="LoginForm.invalid">Login</button>
                 
                 <!-- This should be submit button but I replaced it with <a> for demo purposes-->
               </form>
@@ -101,7 +110,7 @@
                   <!-- <label for="login-namaLengkap" class="label-material">Nama Lengkap</label> -->
                   <div class="form-text text-danger"
                        *ngIf="namaLengkap.errors && (namaLengkap.dirty || namaLengkap.touched)">
-                    <p *ngIf="namaLengkap.errors.required">namaLengkap is required</p>
+                    <p *ngIf="namaLengkap.errors.required">Nama Lengkap is required</p>
                   </div>
                 </div>
 
