@@ -83,7 +83,7 @@
                 </div>
 
 
-                <button id="login" class="btn btn-primary" (click)="tambahKuota()" [disabled]="LoginForm.invalid">Login</button>
+                <button id="login" class="btn btn-primary" routerLink="/mahasiswahome" routerLinkActive="active" [disabled]="LoginForm.invalid">Login</button>
                 
                 <!-- This should be submit button but I replaced it with <a> for demo purposes-->
               </form>
@@ -141,7 +141,7 @@
                   </div>
                 </div>
 
-                <button id="login" class="btn btn-primary" (click)="tambahKuota()" [disabled]="RegisForm.invalid" >Daftar</button>
+                <button id="login" class="btn btn-primary" routerLink="/mahasiswahome" routerLinkActive="active" [disabled]="RegisForm.invalid" >Daftar</button>
                 <!-- This should be submit button but I replaced it with <a> for demo purposes-->
               </form>
               <a routerLink="/dashboard" routerLinkActive="active" class="forgot-pass">dashboard</a><br>

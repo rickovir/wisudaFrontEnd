@@ -20,7 +20,7 @@
           <!-- Navbar Menu -->
           <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
            <!-- Logout    -->
-            <li class="nav-item"><a href="login.html" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+            <li class="nav-item"><a routerLink="/mahasiswamasuk/1" routerLinkActive="active" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
           </ul>
         </div>
       </div>
@@ -32,73 +32,93 @@
 		<!-- Page Header-->
 		<header class="page-header">
 			<div class="container-fluid">
-			  <h2 class="no-margin-bottom">Informasi Data Mahasiswa</h2>
+			  <div class="row">
+			   	<div class="col-lg-11">
+			 		 <h2 class="no-margin-bottom">Informasi Data Mahasiswa</h2>
+				</div>
+			   	<button class="col-lg-1 btn btn-primary btn-sm"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+				</div>
 			</div>
 		</header>
 		  <!-- Dashboard Counts Section-->
-		<section class="dashboard-counts no-padding-bottom">
-		    <div class="container-fluid">
-		      <div class="row bg-white has-shadow">
-		      	<div class="col-xl-2">
-		      	</div>
-		      	<div class="col-xl-8">
-					<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
-			          <label class="col-sm-3 form-control-label">Nama</label>
-			          <div class="col-sm-9">
-			           <!--  <input type="text" class="form-control is-invalid">
-			            <div class="invalid-feedback">Please provide your name.</div> -->
-			            <input type="text" class="form-control">
-			          </div>
-			        </div>
-					<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
-			          <label class="col-sm-3 form-control-label">NIM</label>
-			          <div class="col-sm-9">
-			           <!--  <input type="text" class="form-control is-invalid">
-			            <div class="invalid-feedback">Please provide your name.</div> -->
-			            <input type="text" class="form-control">
-			          </div>
-			        </div>
-					<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
-			          <label class="col-sm-3 form-control-label">Tanggal Lahir</label>
-			          <div class="col-sm-9">
-			           <!--  <input type="text" class="form-control is-invalid">
-			            <div class="invalid-feedback">Please provide your name.</div> -->
-			            <input type="text" class="form-control">
-			          </div>
-			        </div>
-					<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
-			          <label class="col-sm-3 form-control-label">Fakultas</label>
-			           <!--  <input type="text" class="form-control is-invalid">
-			            <div class="invalid-feedback">Please provide your name.</div> -->
-						<div class="col-sm-9 select">
-							<select name="account" class="form-control">
-								<option>Ilmu Komputer</option>
-								<option>Ilmu Kesehatan</option>
-								<option>Ilmu Komunikasi</option>
-								<option>Fisioterapi</option>
-							</select>
-						</div>
-			        </div>
-
-					<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
-			          <label class="col-sm-3 form-control-label">Foto</label>
-			          	<div class="col-sm-9">
-			          	</div>
-			          	<div class="row">
-				          <div class="col-sm-4"><img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded foto-profile" alt="Logo UEU"></div>
-				          <div class="col-sm-8">
+		 <div id="home-mahasiswa">
+		 </div>
+		<div id="update-data-mahasiswa">
+			<div class="breadcrumb-holder container-fluid">
+				<ul class="breadcrumb">
+				  <!-- <li></li> -->
+				  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				  <li class="breadcrumb-item active">Lengkapi Data</li>
+				</ul>
+			</div>
+			<section class="dashboard-counts no-padding-bottom">
+			    <div class="container-fluid">
+			      <div class="row bg-white has-shadow">
+			      	<div class="col-xl-4">
+			      		<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
+							<div class="col-sm-12">
+								<img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAA0NAAAAJDIxMjg1MjQ1LTU3NTktNDU3YS1iYWM2LTg2NWNhZDY4OWIwNA.jpg" class="rounded foto-profile" alt="Logo UEU">
+							</div>
+							<div class="col-sm-12">
+								<!--  <input type="text" class="form-control is-invalid">
+								<div class="invalid-feedback">Please provide your name.</div> -->
+								<button class="btn btn-primary btn-block">Ubah Foto</button>
+								<input type="file" class="form-control">
+					            <div class="form-text text-muted">Ukuran Maksimum 2 MB</div>
+								</div>
+				        </div>
+			      	</div>
+			      	<div class="col-xl-8">
+						<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
+				          <label class="col-sm-3 form-control-label">Nama</label>
+				          <div class="col-sm-9">
 				           <!--  <input type="text" class="form-control is-invalid">
 				            <div class="invalid-feedback">Please provide your name.</div> -->
-							<input type="file" class="form-control">
+				            <input type="text" class="form-control">
 				          </div>
-			      		</div>
-			        </div>
-		      	</div>
-		      	<div class="col-xl-2">
-		      	</div>
-		      </div>
-			</div>
-		</section>
+				        </div>
+						<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
+				          <label class="col-sm-3 form-control-label">NIM</label>
+				          <div class="col-sm-9">
+				           <!--  <input type="text" class="form-control is-invalid">
+				            <div class="invalid-feedback">Please provide your name.</div> -->
+				            <input type="text" class="form-control">
+				          </div>
+				        </div>
+						<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
+				          <label class="col-sm-3 form-control-label">Tanggal Lahir</label>
+				          <div class="col-sm-9">
+				           <!--  <input type="text" class="form-control is-invalid">
+				            <div class="invalid-feedback">Please provide your name.</div> -->
+				            <input type="text" class="form-control">
+				          </div>
+				        </div>
+						<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
+				          <label class="col-sm-3 form-control-label">Fakultas</label>
+				           <!--  <input type="text" class="form-control is-invalid">
+				            <div class="invalid-feedback">Please provide your name.</div> -->
+							<div class="col-sm-9 select">
+								<select name="account" class="form-control">
+									<option>Ilmu Komputer</option>
+									<option>Ilmu Kesehatan</option>
+									<option>Ilmu Komunikasi</option>
+									<option>Fisioterapi</option>
+								</select>
+							</div>
+				        </div>
+						<div class="form-group row"> <!-- <div class="form-group row has-danger"> -->
+				          <button class="btn btn-primary col-sm-4">Upload Berita Sidang</button>
+				          <div class="col-sm-1"></div>
+				          <button class="btn btn-warning col-sm-4">Upload Softcopy TA Sidang</button>
+				        </div>
+						<div class="form-group">
+							<button class="btn btn-success">Lengkapi Data</button>
+						</div>
+			      	</div>
+			      </div>
+				</div>
+			</section>
+		</div>
 	</div>
   </div>
 </div>
