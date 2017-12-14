@@ -1,0 +1,62 @@
+<div class="page login-page">
+  <div class="container d-flex align-items-center">
+    <div class="form-holder">
+      <!-- Halaman Kuota Ada -->
+      <div class="row">
+
+        <div class="col-lg-3">
+        </div>
+
+        <!-- Bagian login -->
+        <div class="col-lg-6 bg-white">
+          <div class="form d-flex align-items-center">
+            <div class="content content-login">
+              <div class="text-center">
+                <img src="https://media.neliti.com/media/organisations/logo-191-universitas-esa-unggul.jpg" class="rounded logo-masuk" alt="Logo UEU">
+                <H1 class="text-primary">Login Operator BAA</H1>
+              </div>
+              <form novalidate [formGroup]="LoginForm" id="login-form">
+                <div class="form-group">
+                  <input id="login-username" type="text" placeholder="username" name="username" class="input-material" formControlName="username" required>
+                  <!-- <label for="login-username" class="label-material">username</label> -->
+                  <div class="form-text text-danger"
+                       *ngIf="username.errors && (username.dirty || username.touched)">
+                    <p *ngIf="username.errors.required">username is required</p>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <input id="login-password" type="password" placeholder="Password" class="input-material" formControlName="password" required>
+                  <!-- <label for="login-password" class="label-material">Password</label> -->
+                  <div class="form-text text-danger"
+                       *ngIf="password.errors && (password.dirty || password.touched)">
+                    <p *ngIf="password.errors.required">Password is required</p>
+                    <p *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{ password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </p>
+                  </div>
+                </div>
+
+
+                <button id="login" class="btn btn-primary" routerLink="/baa-home" routerLinkActive="active" [disabled]="LoginForm.invalid">Login</button>
+                
+                <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+              </form>
+
+              <a routerLink="/dashboard" routerLinkActive="active" class="forgot-pass">dashboard</a>
+              <br>
+              <small>Belum Punya Akun ? </small><a (click)="startDaftar()" class="signup">Daftar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+        </div>
+        <!-- Endof Bagian Login -->
+    <!-- Endof Halaman kuota ada -->
+      </div>
+
+    </div>
+  </div>
+  <div class="copyrights text-center">
+    <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a></p>
+    <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+  </div>
+</div>

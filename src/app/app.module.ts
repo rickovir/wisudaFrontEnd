@@ -9,18 +9,24 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginmhsComponent } from './loginmhs/loginmhs.component';
 import { HomeComponent } from './home/home.component';
 import { HomemhsComponent } from './homemhs/homemhs.component';
+import { LoginbaaComponent } from './loginbaa/loginbaa.component';
+import { HomebaaComponent } from './homebaa/homebaa.component';
 
 const appRoutes: Routes = [
     { 
       path: '', 
       component: LoginmhsComponent 
     },
-	  { 
-	  	path: 'mahasiswamasuk/:k', 
-	  	component: LoginmhsComponent 
-	  },
     { 
-      path: 'mahasiswahome', 
+      path: 'mahasiswa-masuk/:k', 
+      component: LoginmhsComponent 
+    },
+    { 
+      path: 'baa-masuk', 
+      component: LoginbaaComponent 
+    },
+    { 
+      path: 'mahasiswa-home', 
       component: HomemhsComponent 
     },
 	  { 
@@ -39,7 +45,9 @@ const appRoutes: Routes = [
     DashboardComponent,
     LoginmhsComponent,
     HomeComponent,
-    HomemhsComponent
+    HomemhsComponent,
+    LoginbaaComponent,
+    HomebaaComponent
   ],
   imports: [
   	 RouterModule.forRoot(
